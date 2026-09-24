@@ -1,8 +1,8 @@
-export function Input({ label, error, icon: Icon, className = "", type = "text", required = false, ...props }) {
+export function Input({ label, error, icon: Icon, className = "", type = "text", required = false, name, ...props }) {
     return (
         <div className="w-full">
             {label && (
-                <label className="block text-xs font-medium text-slate-700 mb-1.5">
+                <label htmlFor={name} className="block text-xs font-medium text-slate-700 mb-1.5">
                     {label} {required && <span className="text-red-500">*</span>}
                 </label>
             )}
@@ -14,6 +14,9 @@ export function Input({ label, error, icon: Icon, className = "", type = "text",
                 )}
                 <input
                     type={type}
+                    id={name}
+                    name={name}
+                    required={required}
                     className={`w-full bg-white border ${
                         error ? "border-red-500 focus:ring-red-500" : "border-slate-300 focus:border-orange-600 focus:ring-orange-600"
                     } rounded-xl text-slate-900 placeholder-slate-400 text-sm ${
