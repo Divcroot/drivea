@@ -1,4 +1,3 @@
-import React from "react";
 
 export function ProgressBar({ progress = 0, className = "", color = "bg-orange-600" }) {
     return (
