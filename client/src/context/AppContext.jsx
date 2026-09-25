@@ -122,7 +122,33 @@ export const AppProvider = ({ children }) => {
         }
     }, [user, currentFolderId, searchQuery, sortBy])
 
-    const value = { user, setUser, login, logout, register, isLoading, isAuthenticated: !!user, isUploading, setIsUploading, uploadProgress, setUploadProgress, refreshUser, currentFolderId, setCurrentFolderId, breadcrumbs, folders, setFolders, files, setFiles, isDriveLoading, fetchDriveContent, searchQuery, setSearchQuery, sortBy, setSortBy }
+    const value = {
+        user,
+        setUser,
+        login,
+        logout,
+        register,
+        isLoading,
+        isAuthenticated: !!user,
+        isUploading,
+        setIsUploading,
+        uploadProgress,
+        setUploadProgress,
+        refreshUser,
+        currentFolderId,
+        setCurrentFolderId,
+        breadcrumbs,
+        folders,
+        setFolders,
+        files,
+        setFiles,
+        isDriveLoading,
+        fetchDriveContent,
+        searchQuery,
+        setSearchQuery,
+        sortBy,
+        setSortBy
+    }
 
     return <AppContext.Provider value={value}>
         {children}
