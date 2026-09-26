@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { useApp } from "../context/AppContext";
 import api from "../config/api";
 
-const isFolderItem = (item) => item?.item_type === 'folder' || (!item?.mime_type && item?.path !== undefined)
+const isFolderItem = (item) => item?.item_type === 'folder' || (!item?.mime_type && item?.path !== undefined);
 
 export function useDrive() {
 
@@ -13,36 +13,36 @@ export function useDrive() {
         setIsUploading,
         uploadProgress,
         setUploadProgress
-    } = useApp()
+    } = useApp();
 
     //Reusable API action runner with standard toast & callback
 
     const runAction = async (apiCall, successMsg, errMsg, afterSuccess) => {
         try {
-            const res = await apiCall
+            const res = await apiCall;
 
-            if (successMsg) toast.success(successMsg)
+            if (successMsg) toast.success(successMsg);
 
-            if (afterSuccess) afterSuccess(res?.data)
+            if (afterSuccess) afterSuccess(res?.data);
 
-            return true
+            return true;
         } catch (error) {
-            toast.error(error.response?.data?.error || errMsg)
+            toast.error(error.response?.data?.error || errMsg);
 
-            return false
+            return false;
         }
     }
 
     // File Upload with Simulated Progress
 
     const uploadFiles = async (fileList, folder_id = currentFolderId) => {
-        if (!fileList?.length) return
+        if (!fileList?.length) return;
 
-        setIsUploading(true)
+        setIsUploading(true);
 
-        setUploadProgress(0)
+        setUploadProgress(0);
 
-        const totalSize = Array.from(fileList).reduce((acc, f) => acc + (f.size || 0), 0)
+        const totalSize = Array.from(fileList).reduce((acc, f) => acc + (f.size || 0), 0);
 
         const step = 92 / Math.max(12, totalSize / 409715.2);
 
