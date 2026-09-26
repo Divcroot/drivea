@@ -118,7 +118,7 @@ export function useDrive() {
             api.patch(`/api/${endpoint}/${id}/rename`, { name: nextName }),
             `${isFolder ? "Folder" : "File"} renamed.`,
             "Error renaming item.",
-            () => fetchDriveContent()
+            () => fetchDriveContent(currentFolderId)
         )
     }
 
@@ -131,7 +131,7 @@ export function useDrive() {
             api.patch(`/api/${endpoint}/${id}/move`, payload),
             `${isFolder ? "Folder" : "File"} moved.`,
             "Error moving item.",
-            () => fetchDriveContent()
+            () => fetchDriveContent(currentFolderId)
         )
     }
 
@@ -143,7 +143,7 @@ export function useDrive() {
             api.delete(`/api/${endpoint}/${id}`),
             `${isFolder ? "Folder" : "File"} moved to Trash.`,
             "Error deleting item.",
-            () => fetchDriveContent()
+            () => fetchDriveContent(currentFolderId)
         )
     }
 
